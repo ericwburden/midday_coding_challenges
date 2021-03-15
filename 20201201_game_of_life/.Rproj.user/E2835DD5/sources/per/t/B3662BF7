@@ -1,0 +1,26 @@
+{
+    "id": "B3662BF7",
+    "path": "~/projects/midday_coding_challenges/20201201_game_of_life/conways_game_of_life.R",
+    "project_path": "conways_game_of_life.R",
+    "type": "r_source",
+    "hash": "1869564868",
+    "contents": "",
+    "dirty": true,
+    "created": 1606844913681.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "tempName": "Untitled1",
+        "cursorPosition": "152,1",
+        "scrollLine": "107",
+        "docOutlineVisible": "1"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1606856112,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1606870439041,
+    "read_only": false,
+    "read_only_alternatives": []
+}

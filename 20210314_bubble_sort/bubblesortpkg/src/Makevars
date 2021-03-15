@@ -1,0 +1,13 @@
+LIBDIR = rustlib/target/release
+STATLIB = $(LIBDIR)/librustlib.a
+PKG_LIBS = -L$(LIBDIR) -lrustlib -lresolv
+
+all: clean
+
+$(SHLIB): $(STATLIB)
+
+$(STATLIB):
+	PATH="${PATH}:${HOME}/.cargo/bin" cargo build --release --manifest-path=rustlib/Cargo.toml
+
+clean:
+	rm -Rf $(SHLIB) $(STATLIB) $(OBJECTS) rustlib/target

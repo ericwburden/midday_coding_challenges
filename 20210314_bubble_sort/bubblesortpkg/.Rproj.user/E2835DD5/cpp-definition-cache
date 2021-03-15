@@ -1,0 +1,140 @@
+[
+    {
+        "file": "/home/eric/projects/midday_coding_challenges/20210314_bubble_sort/bubblesortpkg/src/rustlib/api.h",
+        "file_last_write": 1615749610.0,
+        "definitions": [
+            {
+                "usr": "c:@T@IntegerSlice",
+                "kind": 8,
+                "parent_name": "",
+                "name": "IntegerSlice",
+                "file": "/home/eric/projects/midday_coding_challenges/20210314_bubble_sort/bubblesortpkg/src/rustlib/api.h",
+                "line": 13,
+                "column": 3
+            },
+            {
+                "usr": "c:@T@LogicalSlice",
+                "kind": 8,
+                "parent_name": "",
+                "name": "LogicalSlice",
+                "file": "/home/eric/projects/midday_coding_challenges/20210314_bubble_sort/bubblesortpkg/src/rustlib/api.h",
+                "line": 18,
+                "column": 3
+            },
+            {
+                "usr": "c:@T@DoubleSlice",
+                "kind": 8,
+                "parent_name": "",
+                "name": "DoubleSlice",
+                "file": "/home/eric/projects/midday_coding_challenges/20210314_bubble_sort/bubblesortpkg/src/rustlib/api.h",
+                "line": 23,
+                "column": 3
+            },
+            {
+                "usr": "c:@T@StringSlice",
+                "kind": 8,
+                "parent_name": "",
+                "name": "StringSlice",
+                "file": "/home/eric/projects/midday_coding_challenges/20210314_bubble_sort/bubblesortpkg/src/rustlib/api.h",
+                "line": 28,
+                "column": 3
+            }
+        ]
+    },
+    {
+        "file": "/home/eric/projects/midday_coding_challenges/20210314_bubble_sort/bubblesortpkg/src/wrapper.c",
+        "file_last_write": 1615768863.0,
+        "definitions": [
+            {
+                "usr": "c:@F@pass_one_integer_wrapper",
+                "kind": 6,
+                "parent_name": "",
+                "name": "pass_one_integer_wrapper(SEXP)",
+                "file": "/home/eric/projects/midday_coding_challenges/20210314_bubble_sort/bubblesortpkg/src/wrapper.c",
+                "line": 13,
+                "column": 6
+            },
+            {
+                "usr": "c:@F@pass_many_integers_wrapper",
+                "kind": 6,
+                "parent_name": "",
+                "name": "pass_many_integers_wrapper(SEXP)",
+                "file": "/home/eric/projects/midday_coding_challenges/20210314_bubble_sort/bubblesortpkg/src/wrapper.c",
+                "line": 20,
+                "column": 6
+            },
+            {
+                "usr": "c:@F@pass_one_logical_wrapper",
+                "kind": 6,
+                "parent_name": "",
+                "name": "pass_one_logical_wrapper(SEXP)",
+                "file": "/home/eric/projects/midday_coding_challenges/20210314_bubble_sort/bubblesortpkg/src/wrapper.c",
+                "line": 38,
+                "column": 6
+            },
+            {
+                "usr": "c:@F@pass_many_logicals_wrapper",
+                "kind": 6,
+                "parent_name": "",
+                "name": "pass_many_logicals_wrapper(SEXP)",
+                "file": "/home/eric/projects/midday_coding_challenges/20210314_bubble_sort/bubblesortpkg/src/wrapper.c",
+                "line": 45,
+                "column": 6
+            },
+            {
+                "usr": "c:@F@pass_one_double_wrapper",
+                "kind": 6,
+                "parent_name": "",
+                "name": "pass_one_double_wrapper(SEXP)",
+                "file": "/home/eric/projects/midday_coding_challenges/20210314_bubble_sort/bubblesortpkg/src/wrapper.c",
+                "line": 64,
+                "column": 6
+            },
+            {
+                "usr": "c:@F@pass_many_doubles_wrapper",
+                "kind": 6,
+                "parent_name": "",
+                "name": "pass_many_doubles_wrapper(SEXP)",
+                "file": "/home/eric/projects/midday_coding_challenges/20210314_bubble_sort/bubblesortpkg/src/wrapper.c",
+                "line": 76,
+                "column": 6
+            },
+            {
+                "usr": "c:@F@pass_one_string_wrapper",
+                "kind": 6,
+                "parent_name": "",
+                "name": "pass_one_string_wrapper(SEXP)",
+                "file": "/home/eric/projects/midday_coding_challenges/20210314_bubble_sort/bubblesortpkg/src/wrapper.c",
+                "line": 95,
+                "column": 6
+            },
+            {
+                "usr": "c:@F@pass_many_strings_wrapper",
+                "kind": 6,
+                "parent_name": "",
+                "name": "pass_many_strings_wrapper(SEXP)",
+                "file": "/home/eric/projects/midday_coding_challenges/20210314_bubble_sort/bubblesortpkg/src/wrapper.c",
+                "line": 118,
+                "column": 6
+            },
+            {
+                "usr": "c:@F@bubble_sort_wrapper",
+                "kind": 6,
+                "parent_name": "",
+                "name": "bubble_sort_wrapper(SEXP)",
+                "file": "/home/eric/projects/midday_coding_challenges/20210314_bubble_sort/bubblesortpkg/src/wrapper.c",
+                "line": 171,
+                "column": 6
+            },
+            {
+                "usr": "c:@F@R_init_bubblesortpkg",
+                "kind": 6,
+                "parent_name": "",
+                "name": "R_init_bubblesortpkg(DllInfo *)",
+                "file": "/home/eric/projects/midday_coding_challenges/20210314_bubble_sort/bubblesortpkg/src/wrapper.c",
+                "line": 202,
+                "column": 6
+            }
+        ]
+    }
+]

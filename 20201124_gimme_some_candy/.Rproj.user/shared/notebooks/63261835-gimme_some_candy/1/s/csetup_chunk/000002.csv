@@ -1,0 +1,7 @@
+"0","library(learnr)"
+"2","Registered S3 method overwritten by 'htmlwidgets':
+  method           from         
+  print.htmlwidget tools:rstudio
+"
+"0","library(testthat)"
+"0","knitr::opts_chunk$set(echo = TRUE)"

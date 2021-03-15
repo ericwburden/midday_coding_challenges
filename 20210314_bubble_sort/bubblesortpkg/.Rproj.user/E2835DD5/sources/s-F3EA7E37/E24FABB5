@@ -1,0 +1,24 @@
+{
+    "id": "E24FABB5",
+    "path": "~/projects/midday_coding_challenges/20210314_bubble_sort/bubblesortpkg/src/rustlib/src/bubble_sort.rs",
+    "project_path": "src/rustlib/src/bubble_sort.rs",
+    "type": "rust",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1615750385091.0,
+    "source_on_save": false,
+    "relative_order": 5,
+    "properties": {
+        "cursorPosition": "16,18",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1615768849,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1615768849265,
+    "read_only": false,
+    "read_only_alternatives": []
+}

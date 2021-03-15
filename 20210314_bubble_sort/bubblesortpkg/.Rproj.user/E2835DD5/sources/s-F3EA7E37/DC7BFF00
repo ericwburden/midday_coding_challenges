@@ -1,0 +1,24 @@
+{
+    "id": "DC7BFF00",
+    "path": "~/projects/midday_coding_challenges/20210314_bubble_sort/bubblesortpkg/src/wrapper.c",
+    "project_path": "src/wrapper.c",
+    "type": "c",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1615750141847.0,
+    "source_on_save": false,
+    "relative_order": 4,
+    "properties": {
+        "cursorPosition": "162,10",
+        "scrollLine": "151"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1615768863,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1615768863335,
+    "read_only": false,
+    "read_only_alternatives": []
+}

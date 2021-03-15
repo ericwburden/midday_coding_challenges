@@ -1,0 +1,13 @@
+name: gimme_some_candy
+title: gimme_some_candy
+username:
+account: eric-w-burden
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3296582
+bundleId: 3901628
+url: https://eric-w-burden.shinyapps.io/gimme_some_candy/
+when: 1606253802.63456
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .RData|gimme_some_candy.html

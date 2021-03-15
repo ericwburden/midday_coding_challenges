@@ -1,0 +1,7 @@
+cairo_set_source_rgb(cr, 0.6, 0.6, 0.6);
+cairo_set_line_width(cr, 1);
+
+cairo_rectangle(cr, 20, 20, 120, 80);
+cairo_rectangle(cr, 180, 20, 80, 80);
+cairo_stroke_preserve(cr);
+cairo_fill(cr);
