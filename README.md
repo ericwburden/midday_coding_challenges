@@ -1,4 +1,4 @@
-# midday_coding_challenges
+# Midday Coding Challenges
 Midday Coding Challenge solutions, from the Code Connector Slack channels. 
 
 Frequently, the folks on the [Code Connector](https://codeconnector.io/) Slack will post Midday Coding Challenges, typically small algorithms or puzzles to implement that more experienced devs can play around with, newer folks can challenge themselves with, and that frequently lead to interesting discussions about implementation or different language quirks. This repository contains my implementations for a number of these challenges. I make no claim to these being the 'best' or 'right' way to handle any of these, but they do represent different approaches to these problems. Often, I use these as opportunities to try out a new package or language, or to do something I don't normally do, or just to show off a feature I really like about a language I'm currently working in. Feel free to poke around and be inspired, or just laugh at some of the obviously bad coding.
