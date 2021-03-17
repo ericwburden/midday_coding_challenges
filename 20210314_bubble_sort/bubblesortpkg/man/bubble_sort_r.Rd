@@ -4,10 +4,10 @@
 \alias{bubble_sort_r}
 \title{Bubble Sorting - R Implementation}
 \usage{
-bubble_sort_r(n)
+bubble_sort_r(nums)
 }
 \arguments{
-\item{n}{numeric vector to sort}
+\item{nums}{numeric vector to sort}
 }
 \value{
 a sorted integer vector

@@ -1,0 +1,1 @@
+/home/eric/projects/midday_coding_challenges/20210315_bowling_sim/bowling_sim/target/debug/libbowling_sim.rlib: /home/eric/projects/midday_coding_challenges/20210315_bowling_sim/bowling_sim/src/lib.rs
