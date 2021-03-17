@@ -202,7 +202,7 @@
 
     <span class="doccomment">/// Roll the &quot;ball&quot;, knock down pins. This is the main function for advancing</span>
     <span class="doccomment">/// the game.</span>
-    <span class="kw">fn</span> <span class="ident">bowl</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">pins</span>: <span class="ident">usize</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span>;
+    <span class="kw">fn</span> <span class="ident">roll</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">pins</span>: <span class="ident">usize</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span>;
 
     <span class="doccomment">/// Indicates whether the game is over, i.e. all ten frames have been played.</span>
     <span class="kw">fn</span> <span class="ident">finished</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span>;
@@ -221,7 +221,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">Game</span> <span class="kw">for</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Frame</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">bowl</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">pins</span>: <span class="ident">usize</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">roll</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">pins</span>: <span class="ident">usize</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">current_frame</span> <span class="op">=</span> <span class="kw">if</span> <span class="self">self</span>.<span class="ident">current_frame_open</span>() {
             <span class="self">self</span>.<span class="ident">pop</span>().<span class="ident">unwrap</span>()
         } <span class="kw">else</span> {
@@ -281,7 +281,7 @@
     <span class="kw">fn</span> <span class="ident">test_gutter_game</span>() {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">new_game</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Frame</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Vec</span>::<span class="ident">new</span>();
         <span class="kw">for</span> <span class="kw">_</span> <span class="kw">in</span> <span class="number">0</span>..<span class="number">20</span> {
-            <span class="ident">new_game</span>.<span class="ident">bowl</span>(<span class="number">0</span>).<span class="ident">unwrap</span>();
+            <span class="ident">new_game</span>.<span class="ident">roll</span>(<span class="number">0</span>).<span class="ident">unwrap</span>();
         }
         <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">new_game</span>.<span class="ident">finished</span>(), <span class="bool-val">true</span>);
         <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">new_game</span>.<span class="ident">score</span>(), <span class="number">0</span>);
@@ -290,9 +290,9 @@
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">test_single_pin_game</span>() {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">new_game</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Frame</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Vec</span>::<span class="ident">new</span>();
-        <span class="ident">new_game</span>.<span class="ident">bowl</span>(<span class="number">1</span>).<span class="ident">unwrap</span>();
+        <span class="ident">new_game</span>.<span class="ident">roll</span>(<span class="number">1</span>).<span class="ident">unwrap</span>();
         <span class="kw">for</span> <span class="kw">_</span> <span class="kw">in</span> <span class="number">1</span>..<span class="number">20</span> {
-            <span class="ident">new_game</span>.<span class="ident">bowl</span>(<span class="number">0</span>).<span class="ident">unwrap</span>();
+            <span class="ident">new_game</span>.<span class="ident">roll</span>(<span class="number">0</span>).<span class="ident">unwrap</span>();
         }
         <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">new_game</span>.<span class="ident">finished</span>(), <span class="bool-val">true</span>);
         <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">new_game</span>.<span class="ident">score</span>(), <span class="number">1</span>);
@@ -301,11 +301,11 @@
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">test_single_spare_game</span>() {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">new_game</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Frame</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Vec</span>::<span class="ident">new</span>();
-        <span class="ident">new_game</span>.<span class="ident">bowl</span>(<span class="number">4</span>).<span class="ident">unwrap</span>();
-        <span class="ident">new_game</span>.<span class="ident">bowl</span>(<span class="number">6</span>).<span class="ident">unwrap</span>();
-        <span class="ident">new_game</span>.<span class="ident">bowl</span>(<span class="number">2</span>).<span class="ident">unwrap</span>();
+        <span class="ident">new_game</span>.<span class="ident">roll</span>(<span class="number">4</span>).<span class="ident">unwrap</span>();
+        <span class="ident">new_game</span>.<span class="ident">roll</span>(<span class="number">6</span>).<span class="ident">unwrap</span>();
+        <span class="ident">new_game</span>.<span class="ident">roll</span>(<span class="number">2</span>).<span class="ident">unwrap</span>();
         <span class="kw">for</span> <span class="kw">_</span> <span class="kw">in</span> <span class="number">3</span>..<span class="number">20</span> {
-            <span class="ident">new_game</span>.<span class="ident">bowl</span>(<span class="number">0</span>).<span class="ident">unwrap</span>();
+            <span class="ident">new_game</span>.<span class="ident">roll</span>(<span class="number">0</span>).<span class="ident">unwrap</span>();
         }
         <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">new_game</span>.<span class="ident">finished</span>(), <span class="bool-val">true</span>);
         <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">new_game</span>.<span class="ident">score</span>(), <span class="number">14</span>);
@@ -314,11 +314,11 @@
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">test_single_strike_game</span>() {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">new_game</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Frame</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Vec</span>::<span class="ident">new</span>();
-        <span class="ident">new_game</span>.<span class="ident">bowl</span>(<span class="number">10</span>).<span class="ident">unwrap</span>();
-        <span class="ident">new_game</span>.<span class="ident">bowl</span>(<span class="number">6</span>).<span class="ident">unwrap</span>();
-        <span class="ident">new_game</span>.<span class="ident">bowl</span>(<span class="number">2</span>).<span class="ident">unwrap</span>();
+        <span class="ident">new_game</span>.<span class="ident">roll</span>(<span class="number">10</span>).<span class="ident">unwrap</span>();
+        <span class="ident">new_game</span>.<span class="ident">roll</span>(<span class="number">6</span>).<span class="ident">unwrap</span>();
+        <span class="ident">new_game</span>.<span class="ident">roll</span>(<span class="number">2</span>).<span class="ident">unwrap</span>();
         <span class="kw">for</span> <span class="kw">_</span> <span class="kw">in</span> <span class="number">4</span>..<span class="number">20</span> {
-            <span class="ident">new_game</span>.<span class="ident">bowl</span>(<span class="number">0</span>).<span class="ident">unwrap</span>();
+            <span class="ident">new_game</span>.<span class="ident">roll</span>(<span class="number">0</span>).<span class="ident">unwrap</span>();
         }
         <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">new_game</span>.<span class="ident">finished</span>(), <span class="bool-val">true</span>);
         <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">new_game</span>.<span class="ident">score</span>(), <span class="number">26</span>);
@@ -328,7 +328,7 @@
     <span class="kw">fn</span> <span class="ident">test_perfect_game</span>() {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">new_game</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Frame</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Vec</span>::<span class="ident">new</span>();
         <span class="kw">for</span> <span class="kw">_</span> <span class="kw">in</span> <span class="number">0</span>..<span class="number">12</span> {
-            <span class="ident">new_game</span>.<span class="ident">bowl</span>(<span class="number">10</span>).<span class="ident">unwrap</span>();
+            <span class="ident">new_game</span>.<span class="ident">roll</span>(<span class="number">10</span>).<span class="ident">unwrap</span>();
         }
         <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">new_game</span>.<span class="ident">finished</span>(), <span class="bool-val">true</span>);
         <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">new_game</span>.<span class="ident">score</span>(), <span class="number">300</span>);
@@ -337,25 +337,25 @@
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">test_sanity_game</span>() {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">new_game</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Frame</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Vec</span>::<span class="ident">new</span>();
-        <span class="ident">new_game</span>.<span class="ident">bowl</span>(<span class="number">1</span>).<span class="ident">unwrap</span>();
-        <span class="ident">new_game</span>.<span class="ident">bowl</span>(<span class="number">4</span>).<span class="ident">unwrap</span>();
-        <span class="ident">new_game</span>.<span class="ident">bowl</span>(<span class="number">4</span>).<span class="ident">unwrap</span>();
-        <span class="ident">new_game</span>.<span class="ident">bowl</span>(<span class="number">5</span>).<span class="ident">unwrap</span>();
-        <span class="ident">new_game</span>.<span class="ident">bowl</span>(<span class="number">6</span>).<span class="ident">unwrap</span>();
-        <span class="ident">new_game</span>.<span class="ident">bowl</span>(<span class="number">4</span>).<span class="ident">unwrap</span>();
-        <span class="ident">new_game</span>.<span class="ident">bowl</span>(<span class="number">5</span>).<span class="ident">unwrap</span>();
-        <span class="ident">new_game</span>.<span class="ident">bowl</span>(<span class="number">5</span>).<span class="ident">unwrap</span>();
-        <span class="ident">new_game</span>.<span class="ident">bowl</span>(<span class="number">10</span>).<span class="ident">unwrap</span>();
-        <span class="ident">new_game</span>.<span class="ident">bowl</span>(<span class="number">0</span>).<span class="ident">unwrap</span>();
-        <span class="ident">new_game</span>.<span class="ident">bowl</span>(<span class="number">1</span>).<span class="ident">unwrap</span>();
-        <span class="ident">new_game</span>.<span class="ident">bowl</span>(<span class="number">7</span>).<span class="ident">unwrap</span>();
-        <span class="ident">new_game</span>.<span class="ident">bowl</span>(<span class="number">3</span>).<span class="ident">unwrap</span>();
-        <span class="ident">new_game</span>.<span class="ident">bowl</span>(<span class="number">6</span>).<span class="ident">unwrap</span>();
-        <span class="ident">new_game</span>.<span class="ident">bowl</span>(<span class="number">4</span>).<span class="ident">unwrap</span>();
-        <span class="ident">new_game</span>.<span class="ident">bowl</span>(<span class="number">10</span>).<span class="ident">unwrap</span>();
-        <span class="ident">new_game</span>.<span class="ident">bowl</span>(<span class="number">2</span>).<span class="ident">unwrap</span>();
-        <span class="ident">new_game</span>.<span class="ident">bowl</span>(<span class="number">8</span>).<span class="ident">unwrap</span>();
-        <span class="ident">new_game</span>.<span class="ident">bowl</span>(<span class="number">6</span>).<span class="ident">unwrap</span>();
+        <span class="ident">new_game</span>.<span class="ident">roll</span>(<span class="number">1</span>).<span class="ident">unwrap</span>();
+        <span class="ident">new_game</span>.<span class="ident">roll</span>(<span class="number">4</span>).<span class="ident">unwrap</span>();
+        <span class="ident">new_game</span>.<span class="ident">roll</span>(<span class="number">4</span>).<span class="ident">unwrap</span>();
+        <span class="ident">new_game</span>.<span class="ident">roll</span>(<span class="number">5</span>).<span class="ident">unwrap</span>();
+        <span class="ident">new_game</span>.<span class="ident">roll</span>(<span class="number">6</span>).<span class="ident">unwrap</span>();
+        <span class="ident">new_game</span>.<span class="ident">roll</span>(<span class="number">4</span>).<span class="ident">unwrap</span>();
+        <span class="ident">new_game</span>.<span class="ident">roll</span>(<span class="number">5</span>).<span class="ident">unwrap</span>();
+        <span class="ident">new_game</span>.<span class="ident">roll</span>(<span class="number">5</span>).<span class="ident">unwrap</span>();
+        <span class="ident">new_game</span>.<span class="ident">roll</span>(<span class="number">10</span>).<span class="ident">unwrap</span>();
+        <span class="ident">new_game</span>.<span class="ident">roll</span>(<span class="number">0</span>).<span class="ident">unwrap</span>();
+        <span class="ident">new_game</span>.<span class="ident">roll</span>(<span class="number">1</span>).<span class="ident">unwrap</span>();
+        <span class="ident">new_game</span>.<span class="ident">roll</span>(<span class="number">7</span>).<span class="ident">unwrap</span>();
+        <span class="ident">new_game</span>.<span class="ident">roll</span>(<span class="number">3</span>).<span class="ident">unwrap</span>();
+        <span class="ident">new_game</span>.<span class="ident">roll</span>(<span class="number">6</span>).<span class="ident">unwrap</span>();
+        <span class="ident">new_game</span>.<span class="ident">roll</span>(<span class="number">4</span>).<span class="ident">unwrap</span>();
+        <span class="ident">new_game</span>.<span class="ident">roll</span>(<span class="number">10</span>).<span class="ident">unwrap</span>();
+        <span class="ident">new_game</span>.<span class="ident">roll</span>(<span class="number">2</span>).<span class="ident">unwrap</span>();
+        <span class="ident">new_game</span>.<span class="ident">roll</span>(<span class="number">8</span>).<span class="ident">unwrap</span>();
+        <span class="ident">new_game</span>.<span class="ident">roll</span>(<span class="number">6</span>).<span class="ident">unwrap</span>();
         <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">new_game</span>.<span class="ident">finished</span>(), <span class="bool-val">true</span>);
         <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">new_game</span>.<span class="ident">score</span>(), <span class="number">133</span>);
     }

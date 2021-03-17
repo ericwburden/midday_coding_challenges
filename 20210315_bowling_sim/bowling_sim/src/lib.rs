@@ -19,7 +19,7 @@ pub trait Game {
 
     /// Roll the "ball", knock down pins. This is the main function for advancing
     /// the game.
-    fn bowl(&mut self, pins: usize) -> Result<()>;
+    fn roll(&mut self, pins: usize) -> Result<()>;
 
     /// Indicates whether the game is over, i.e. all ten frames have been played.
     fn finished(&self) -> bool;
@@ -38,7 +38,7 @@ pub trait Game {
 }
 
 impl Game for Vec<Frame> {
-    fn bowl(&mut self, pins: usize) -> Result<()> {
+    fn roll(&mut self, pins: usize) -> Result<()> {
         let mut current_frame = if self.current_frame_open() {
             self.pop().unwrap()
         } else {
@@ -98,7 +98,7 @@ mod tests {
     fn test_gutter_game() {
         let mut new_game: Vec<Frame> = Vec::new();
         for _ in 0..20 {
-            new_game.bowl(0).unwrap();
+            new_game.roll(0).unwrap();
         }
         assert_eq!(new_game.finished(), true);
         assert_eq!(new_game.score(), 0);
@@ -107,9 +107,9 @@ mod tests {
     #[test]
     fn test_single_pin_game() {
         let mut new_game: Vec<Frame> = Vec::new();
-        new_game.bowl(1).unwrap();
+        new_game.roll(1).unwrap();
         for _ in 1..20 {
-            new_game.bowl(0).unwrap();
+            new_game.roll(0).unwrap();
         }
         assert_eq!(new_game.finished(), true);
         assert_eq!(new_game.score(), 1);
@@ -118,11 +118,11 @@ mod tests {
     #[test]
     fn test_single_spare_game() {
         let mut new_game: Vec<Frame> = Vec::new();
-        new_game.bowl(4).unwrap();
-        new_game.bowl(6).unwrap();
-        new_game.bowl(2).unwrap();
+        new_game.roll(4).unwrap();
+        new_game.roll(6).unwrap();
+        new_game.roll(2).unwrap();
         for _ in 3..20 {
-            new_game.bowl(0).unwrap();
+            new_game.roll(0).unwrap();
         }
         assert_eq!(new_game.finished(), true);
         assert_eq!(new_game.score(), 14);
@@ -131,11 +131,11 @@ mod tests {
     #[test]
     fn test_single_strike_game() {
         let mut new_game: Vec<Frame> = Vec::new();
-        new_game.bowl(10).unwrap();
-        new_game.bowl(6).unwrap();
-        new_game.bowl(2).unwrap();
+        new_game.roll(10).unwrap();
+        new_game.roll(6).unwrap();
+        new_game.roll(2).unwrap();
         for _ in 4..20 {
-            new_game.bowl(0).unwrap();
+            new_game.roll(0).unwrap();
         }
         assert_eq!(new_game.finished(), true);
         assert_eq!(new_game.score(), 26);
@@ -145,7 +145,7 @@ mod tests {
     fn test_perfect_game() {
         let mut new_game: Vec<Frame> = Vec::new();
         for _ in 0..12 {
-            new_game.bowl(10).unwrap();
+            new_game.roll(10).unwrap();
         }
         assert_eq!(new_game.finished(), true);
         assert_eq!(new_game.score(), 300);
@@ -154,25 +154,25 @@ mod tests {
     #[test]
     fn test_sanity_game() {
         let mut new_game: Vec<Frame> = Vec::new();
-        new_game.bowl(1).unwrap();
-        new_game.bowl(4).unwrap();
-        new_game.bowl(4).unwrap();
-        new_game.bowl(5).unwrap();
-        new_game.bowl(6).unwrap();
-        new_game.bowl(4).unwrap();
-        new_game.bowl(5).unwrap();
-        new_game.bowl(5).unwrap();
-        new_game.bowl(10).unwrap();
-        new_game.bowl(0).unwrap();
-        new_game.bowl(1).unwrap();
-        new_game.bowl(7).unwrap();
-        new_game.bowl(3).unwrap();
-        new_game.bowl(6).unwrap();
-        new_game.bowl(4).unwrap();
-        new_game.bowl(10).unwrap();
-        new_game.bowl(2).unwrap();
-        new_game.bowl(8).unwrap();
-        new_game.bowl(6).unwrap();
+        new_game.roll(1).unwrap();
+        new_game.roll(4).unwrap();
+        new_game.roll(4).unwrap();
+        new_game.roll(5).unwrap();
+        new_game.roll(6).unwrap();
+        new_game.roll(4).unwrap();
+        new_game.roll(5).unwrap();
+        new_game.roll(5).unwrap();
+        new_game.roll(10).unwrap();
+        new_game.roll(0).unwrap();
+        new_game.roll(1).unwrap();
+        new_game.roll(7).unwrap();
+        new_game.roll(3).unwrap();
+        new_game.roll(6).unwrap();
+        new_game.roll(4).unwrap();
+        new_game.roll(10).unwrap();
+        new_game.roll(2).unwrap();
+        new_game.roll(8).unwrap();
+        new_game.roll(6).unwrap();
         assert_eq!(new_game.finished(), true);
         assert_eq!(new_game.score(), 133);
     }
