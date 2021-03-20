@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["BowlingError","Error type for this Bowling Game"]]});

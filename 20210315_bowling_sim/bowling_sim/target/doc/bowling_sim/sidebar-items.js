@@ -1,1 +1,0 @@
-initSidebarItems({"mod":[["err","Implements an error type for the bowling simulator"],["frame","Implements the Frame struct"]],"trait":[["Game","Trait to provide functions related to a bowling Game"]]});
