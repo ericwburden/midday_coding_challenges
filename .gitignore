@@ -13,4 +13,4 @@ target/*
 */*/src/*.so
 */*/src/*.dll
 */*/src/*.a
-*/*/target/*
+*/git */target/*
