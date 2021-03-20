@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["FrameStatus","Enum represents the status of the frame:"]],"struct":[["Frame","Represents a single frame in a bowling game. Implements functions for updating and modifying a frame. Contains the frames current status and number of pins knocked down (score)."]]});

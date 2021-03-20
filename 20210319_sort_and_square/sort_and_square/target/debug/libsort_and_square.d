@@ -1,0 +1,1 @@
+/home/eric/projects/midday_coding_challenges/20210319_sort_and_square/sort_and_square/target/debug/libsort_and_square.rlib: /home/eric/projects/midday_coding_challenges/20210319_sort_and_square/sort_and_square/src/lib.rs
