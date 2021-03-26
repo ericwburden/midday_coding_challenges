@@ -1,0 +1,1 @@
+rmarkdown::render("probability_sampling.Rmd", output_file="index.html")

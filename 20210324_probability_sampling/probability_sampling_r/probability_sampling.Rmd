@@ -1,0 +1,95 @@
+---
+title: "Animal Farm - Sampling Probability"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, echo=FALSE}
+knitr::opts_chunk$set(
+	echo = TRUE,
+	message = FALSE,
+	warning = FALSE
+)
+library(tibble)
+library(dplyr)
+library(ggplot2)
+library(gganimate)
+```
+
+# Animal Farm
+You have been contracted by a farmer (with an unusually gruff voice) to provide an algorithm which will return a number from a list with a given probability. This farmer, it seems, runs a farm that has fallen on hard times, and he must daily choose which animals to feed that day. Of course, instead of choosing purely randomly or rotating through the animals by species, the farmer has decided that the fairest way to distribute food is to have a computer make the decisions. Computers cannot be biased, after all. In order to maintain this illusion of fairness, you the programmer are not informed which type of animal each ID number corresponds to, instead you are given a list of probabilities for each ID. After all, some animals are more equal than others. Very importantly, you need to demonstrate that the algorithm will in fact produce each ID number from the list the appropriate proportion of the time. For example, given the numbers [1, 2, 3, 4] and probabilities [0.1, 0.5, 0.2, 0.2], your function should return 1 10% of the time, 2 50% of the time, and 3 and 4 20% of the time.
+
+**Some business rules:**
+
+- You are given n unique ID numbers as well as n probabilities that sum up to 1.
+- You should be able to generate random numbers between 0 and 1 uniformly using your language's standard library.
+- You need to demonstrate the efficacy of your function. It is not enough to say that it works, you need to prove it. Typically, this is what unit tests are for, but novel forms of proof will also be accepted so long as they are sufficiently convincing.
+- Always remember: *Four legs good, two legs better.*
+
+## Sampling Algorithm
+
+The following algorithm converts the given probabilities to their cumulative sum (the final of which should be 1). Then determine the number of cumulative probabilities that are less than or equal to a random number between 0 and 1, this is our `discriminator`. Return the ID from the list of IDs at index `discriminator` + 1.
+
+```{r sampling_algorithm}
+random_choice <- function(ids = c(1, 2, 3, 4), probs = c(0.1, 0.5, 0.2, 0.2)) {
+  if (length(ids) != length(probs)) { stop("Arguments of differing lengths.") }
+  cum_probs <- cumsum(probs)
+  
+  if (rev(cum_probs)[1] != 1) { stop("Probabilities don't sum to 1.") }
+  discriminator <- sum(cum_probs <= runif(1))
+  ids[discriminator + 1]
+}
+```
+
+## Proof of Efficacy
+
+In order to prove the effectiveness of the above algorithm, we build a data frame containing the results of running the algorithm 1M times. These runs are split into groups of 10K, sequentially, and the number and proportion of times each ID was chosen were calculated.
+
+```{r proof_of_efficacy_data, cache=TRUE}
+ids = c(1, 2, 3, 4); probs = c(0.1, 0.5, 0.2, 0.2)
+samples <- replicate(1000000, random_choice(ids, probs))
+sample_table <- tibble(
+  run_no = 1:1000000,
+  result = samples,
+  frame_no = (1:1000000) %/% 10000
+)
+
+plot_frames <- sample_table %>% 
+  group_by(result, frame_no) %>% 
+  tally() %>% 
+  mutate(
+    cumn = cumsum(n),
+    denominator = (frame_no + 1) * 10000,
+    cum_pct = cumn / denominator,
+    label = scales::percent(cum_pct, 0.001)
+  )
+```
+
+<br>
+
+As each batch is added to the total results, we can see that the rate at which each ID is chosen remains consistent over each batch of 10K runs.
+
+```{r animated_plot}
+p <- ggplot(plot_frames, aes(result, cumn, group = frame_no)) +
+  geom_col() + 
+  geom_label(aes(label = label), vjust = -1, size = 5) +
+  theme_minimal() +
+  labs(
+    x = "ID #",
+    y = "Times Chosen",
+    title = "Number of times each ID is chosen",
+    subtitle = "ids = [1, 2, 3, 4], probs = [0.1, 0.5, 0.2, 0.2]"
+  ) +
+  theme(text = element_text(size = 20)) +
+  transition_states(frame_no, transition_length = 2, state_length = 1)
+
+animation <- animate(p, renderer = av_renderer(), width = 800, height = 600)
+anim_save("plot.webm", animation = animation, renderer = av_renderer(), width = 800, height = 600)
+```
+
+![](plot.webm){width=100%}
+
+
+
+
