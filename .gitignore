@@ -14,3 +14,5 @@ target/*
 */*/src/*.dll
 */*/src/*.a
 */*/target/*
+
+.direnv/
