@@ -33,17 +33,33 @@ mod tests {
     use super::*; 
 
     #[test]
+    fn should_pass_all_the_repo_test_cases() {
+        let test_cases = [
+            ([5, 2, 7, 8],  true),
+            ([2, 4, 8, 10], true),
+            ([27, 1, 1, 1], true),
+            ([5, 0, 4, 4],  true),
+            ([47, 2, 0, 0], true),
+            ([1, 1, 73, 3], true),
+            ([1, 5, 7, 19], false),
+        ];
+        for (input, result) in test_cases.iter() {
+            assert_eq!(play(input), *result);
+        }
+    }
+
+    #[test]
     fn test_handles_simplest_case() {
         // 2 + 4 + 8 + 10 = 24
         let nums = [2, 4, 8, 10];
-        assert_eq!(play(&nums), true);
+        assert!(play(&nums));
     }
 
     #[test]
     fn test_handles_div_by_zero() {
         // (5 + 0) * 4 + 4 = 24
         let nums = [5, 0, 4, 4];
-        assert_eq!(play(&nums), true);
+        assert!(play(&nums))
     }
 
     #[test]
@@ -52,13 +68,13 @@ mod tests {
         // round(23.5) -> 24
         // trunc(23.5) -> 23
         let nums = [47, 2, 0, 0];
-        assert_eq!(play(&nums), true);
+        assert!(play(&nums));
     }
 
     #[test]
     fn test_identifies_failing_combinations() {
         // Cannot make 24 with these numbers
         let nums = [1, 5, 7, 19];
-        assert_eq!(play(&nums), false);
+        assert!(!play(&nums));
     }
 }
