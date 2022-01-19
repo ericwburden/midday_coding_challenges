@@ -1,0 +1,52 @@
+
+running 7 tests
+test tests::benchmarking ... Operating on concat: aaaaaaaaaa; words: ["a", "aa", "aaa", "aaaa", "aaaaa", "aaaaaa", "aaaaaaa", "aaaaaaaa", "aaaaaaaaa", "aaaaaaaaaa"]
+Using the prefix stripping method: 6144 iterations
+Using the character iteration method: 2559 iterations
+Using the recursive method: 111 iterations
+
+ok
+test tests::should_find_compound_words ... Operating on concat: baseball; words: ["base", "ball", "baseball"]
+Using the prefix stripping method: 10 iterations
+Using the character iteration method: 18 iterations
+Using the recursive method: 16 iterations
+
+ok
+test tests::should_find_multiple_lists ... Operating on concat: catsanddog; words: ["cat", "cats", "and", "sand", "dog"]
+Using the prefix stripping method: 32 iterations
+Using the character iteration method: 41 iterations
+Using the recursive method: 30 iterations
+
+ok
+test tests::should_find_multiple_lists_with_reuse ... Operating on concat: pineapplepenapple; words: ["apple", "pen", "applepen", "pine", "pineapple"]
+Using the prefix stripping method: 45 iterations
+Using the character iteration method: 78 iterations
+Using the recursive method: 49 iterations
+
+ok
+test tests::should_find_multiple_words ... Operating on concat: bearsfish; words: ["bears", "fish"]
+Using the prefix stripping method: 7 iterations
+Using the character iteration method: 18 iterations
+Using the recursive method: 17 iterations
+
+ok
+test tests::should_find_single_word ... Operating on concat: bears; words: ["bears"]
+Using the prefix stripping method: 3 iterations
+Using the character iteration method: 8 iterations
+Using the recursive method: 7 iterations
+
+ok
+test tests::should_return_empty_vec_for_no_matches ... Operating on concat: catsandog; words: ["cats", "dog", "sand", "and", "cat"]
+Using the prefix stripping method: 30 iterations
+Using the character iteration method: 34 iterations
+Using the recursive method: 17 iterations
+
+ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
