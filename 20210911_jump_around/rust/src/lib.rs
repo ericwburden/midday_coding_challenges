@@ -7,7 +7,26 @@
 
 use std::collections::VecDeque;
 
+#[allow(dead_code)]
 fn jump_to(n: isize) -> Option<isize> {
+    jump_math(n);
+    jump_deque(n)
+}
+
+fn jump_math(n: isize) -> Option<isize> {
+    let target = n.abs();
+    let mut steps  = 0;
+    let mut cumsum = 0;
+    loop {
+        steps  += 1;
+        cumsum += steps;
+        if cumsum < target { continue; }
+        if (cumsum % 2) == (target % 2) { return Some(steps); }
+    }
+}
+
+
+fn jump_deque(n: isize) -> Option<isize> {
     let mut queue = VecDeque::new();
     queue.push_back((0, 0)); 
     while let Some((jumps, current)) = queue.pop_front() {
@@ -53,5 +72,10 @@ mod tests {
         assert_eq!(jump_to(-111), Some(17));
         assert_eq!(jump_to(-175), Some(21));
         assert_eq!(jump_to(-210), Some(20));
+    }
+
+    #[test]
+    fn can_it_withstand_the_mega_jump_test() {
+        assert_eq!(jump_to(-154290), Some(555));
     }
 }

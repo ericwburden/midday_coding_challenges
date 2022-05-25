@@ -1,0 +1,4 @@
+name = "chromo"
+uuid = "c7dd2e2e-c9e0-463d-b06a-307d4ad59388"
+authors = ["Eric Burden <eric@ericburden.dev>"]
+version = "0.1.0"
