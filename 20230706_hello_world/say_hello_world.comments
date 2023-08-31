@@ -1,0 +1,46 @@
+set counter 0             -- An incrementing counter
+set character 0           -- Register to hold the character value to print out
+set diff 0                -- Initialize a register to test whether we should print a character
+set one 1                 -- Constant value `1`
+set two 2                 -- Constat value `2`
+set newline 10            -- Constant value that corresponds to a newline in ASCII
+set UPDATE_BREAKPOINT 11  -- Points at the line to set the current breakpoint
+set NEXT_CHARACTER 36     -- Points at the line for the NEXT_CHARACTER block of code
+set MAIN_LOOP 40          -- Points at the line for the MAIN_LOOP block of code
+set END 46                -- Points at the line for the end of the code
+set breakpoint 72         -- When counter == breakpoint, print a character
+jmp MAIN_LOOP             -- Jump to MAIN_LOOP
+set breakpoint 173
+jmp MAIN_LOOP
+set breakpoint 281        -- Subsequent `breakpoint` values represent the cumulative sum
+jmp MAIN_LOOP             -- of `counter` when you need to print a new character. These
+set breakpoint 389        -- values come from the cumulative sum of the ASCII codes for
+jmp MAIN_LOOP             -- the string "Hello World!".
+set breakpoint 500
+jmp MAIN_LOOP
+set breakpoint 532
+jmp MAIN_LOOP
+set breakpoint 619
+jmp MAIN_LOOP
+set breakpoint 730
+jmp MAIN_LOOP
+set breakpoint 844
+jmp MAIN_LOOP
+set breakpoint 952
+jmp MAIN_LOOP
+set breakpoint 1052
+jmp MAIN_LOOP
+set breakpoint 1085
+jmp MAIN_LOOP
+jmp END                   -- After the last breakpoint update, end the program.
+chr character             -- Start of the NEXT_CHARACTER code block, print the character
+set character 0           -- Reset the character register
+add two UPDATE_BREAKPOINT -- Move to the next breakpoint value, then resume the counter
+jmp UPDATE_BREAKPOINT
+cpy counter diff          -- Start MAIN_LOOP, check to see if the counter is equal to
+sub breakpoint diff       --  the current breakpoint, if so...
+jwz diff NEXT_CHARACTER   --  print the current character and move to the next one.
+add one counter           -- Increment the counter and character values
+add one character         
+jmp MAIN_LOOP             -- Repeat the MAIN_LOOP (until counter == breakpoint)
+chr newline               -- End program by printing a newline

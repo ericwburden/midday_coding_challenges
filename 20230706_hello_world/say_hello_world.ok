@@ -1,0 +1,46 @@
+set counter 0
+set character 0
+set diff 0
+set one 1
+set two 2
+set newline 10
+set UPDATE_BREAKPOINT 11
+set NEXT_CHARACTER 36
+set MAIN_LOOP 40
+set END 46
+set breakpoint 72
+jmp MAIN_LOOP
+set breakpoint 173
+jmp MAIN_LOOP
+set breakpoint 281
+jmp MAIN_LOOP
+set breakpoint 389
+jmp MAIN_LOOP
+set breakpoint 500
+jmp MAIN_LOOP
+set breakpoint 532
+jmp MAIN_LOOP
+set breakpoint 619
+jmp MAIN_LOOP
+set breakpoint 730
+jmp MAIN_LOOP
+set breakpoint 844
+jmp MAIN_LOOP
+set breakpoint 952
+jmp MAIN_LOOP
+set breakpoint 1052
+jmp MAIN_LOOP
+set breakpoint 1085
+jmp MAIN_LOOP
+jmp END
+chr character
+set character 0
+add two UPDATE_BREAKPOINT
+jmp UPDATE_BREAKPOINT
+cpy counter diff
+sub breakpoint diff
+jwz diff NEXT_CHARACTER
+add one counter
+add one character
+jmp MAIN_LOOP
+chr newline
